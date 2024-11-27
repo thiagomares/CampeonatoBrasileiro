@@ -8,7 +8,9 @@ x-spark-common: &spark-common
     - airflow
 
 services:
-  
+  scheduler:
+    volumes:
+      - /home/thiagomares/astronomia/dags:/usr/local/airflow/dags:zs
   spark-master:
       <<: *spark-common
       command: bin/spark-class org.apache.spark.deploy.master.Master
