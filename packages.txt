@@ -1,0 +1,4 @@
+gcc
+python3-dev 
+openjdk-17-jdk
+unzip
