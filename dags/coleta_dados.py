@@ -30,9 +30,8 @@ def dummy_pipeline():
     def coleta_dados():
         link = 'https://www.kaggle.com/api/v1/datasets/download/adaoduque/campeonato-brasileiro-de-futebol'
         nome_arquivo = 'archive.zip'
-        pasta_destino = "/usr/local/airflow/dados"  # Diretório no contêiner do Airflow
-
-        # Certifique-se de que a pasta de destino existe
+        pasta_destino = "/usr/local/airflow/dados"
+        
         os.makedirs(pasta_destino, exist_ok=True)
         caminho_arquivo = os.path.join(pasta_destino, nome_arquivo)
 
@@ -48,7 +47,7 @@ def dummy_pipeline():
     
     descompacta_dados = BashOperator(
         task_id='dados',
-        bash_command='unzip /usr/local/airflow/dados/archive.zip -d /usr/local/airflow/dados',
+        bash_command='unzip -o /usr/local/airflow/dados/archive.zip -d /usr/local/airflow/dados',
     )
     
     cartoes = SparkSubmitOperator(
