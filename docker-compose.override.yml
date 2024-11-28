@@ -9,8 +9,10 @@ x-spark-common: &spark-common
 
 services:
   scheduler:
+    user: root
+    privileged: true
     volumes:
-      - /home/thiagomares/astronomia/dags:/usr/local/airflow/dags:zs
+      - /home/thiagomares/astronomia/dados/:/usr/local/airflow/dados/:z
   spark-master:
       <<: *spark-common
       command: bin/spark-class org.apache.spark.deploy.master.Master
@@ -31,7 +33,7 @@ services:
       PYSPARK_PYTHON: python3
       PYSPARK_DRIVER_PYTHON: python3
       HADOOP_CONF_DIR: /opt/hadoop/etc/hadoop
-      YARN_CONF_DIR: /opt/hadoop/etc/hadoop
+      YARN_CONF_DIR: /opt/hadoop/etc/hadoop 
   mysql:
     image: mysql:8.0
     environment:
