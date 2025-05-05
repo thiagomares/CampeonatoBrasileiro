@@ -1,6 +1,8 @@
 name: Ola Mundo
 
-on: [push, manual]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   say-hello:
