@@ -1,0 +1,11 @@
+name: Ola Mundo
+
+on: [push, manual]
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Imprimir Olá Mundo
+        run: echo "Olá, mundo!"
